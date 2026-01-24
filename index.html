@@ -95,6 +95,10 @@
             font-family: Chicago, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
             color: var(--color-text);
             background-color: var(--color-bg);
+            background-image: url('t.png');
+            background-repeat: repeat;
+            background-attachment: fixed;
+            background-position: 0 0;
             line-height: 1.6;
             overflow-x: hidden;
             width: 100%;
@@ -110,6 +114,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
             padding: 0 20px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             z-index: 1000;
@@ -138,6 +143,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            flex-shrink: 0;
         }
 
         .header-logo {
@@ -148,7 +154,7 @@
 
         .header-tagline {
             font-size: 10px;
-            color: var(--color-accent);
+            color: var(--color-primary);
             line-height: 1.1;
             display: flex;
             flex-direction: column;
@@ -156,23 +162,40 @@
             justify-content: center;
         }
 
-        .header-contacts {
+        .header-right {
             display: flex;
             flex-direction: row;
             align-items: center;
             gap: 12px;
+            flex-shrink: 0;
+            flex-wrap: nowrap;
+        }
+
+        .header-phone-group {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .header-social-group {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-shrink: 0;
         }
 
         .header-phone-icon {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 38px;
+            height: 44px;
         }
 
         .header-phone-icon svg {
-            width: 48px;
-            height: 38px;
+            width: 52px;
+            height: 44px;
             fill: var(--color-primary);
         }
 
@@ -186,11 +209,13 @@
         .header-phone {
             text-decoration: none;
             color: var(--color-primary);
-            font-size: 14px;
+            font-size: 16px;
             cursor: pointer;
             line-height: 1.2;
             user-select: none;
             -webkit-tap-highlight-color: rgba(0, 96, 152, 0.2);
+            min-height: 1.2em;
+            display: inline-block;
         }
 
         .header-social {
@@ -257,7 +282,7 @@
 
         nav a {
             display: block;
-            padding: 16px 20px;
+            padding: 8px 20px;
             color: white;
             text-decoration: none;
             text-align: center;
@@ -310,6 +335,8 @@
             margin-bottom: 32px;
             margin-top: -20px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            hyphens: none;
+            word-break: keep-all;
         }
 
         .hero-subtitle {
@@ -372,11 +399,21 @@
             }
         }
 
+        /* Unified content background wrapper */
+        .content-wrapper {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
         .info-blocks {
             padding: 60px 20px;
             max-width: 1000px;
             margin: 0 auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.92);
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             margin-top: 40px;
@@ -448,6 +485,11 @@
             padding: 60px 20px;
             max-width: 1000px;
             margin: 0 auto;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-top: 40px;
+            margin-bottom: 40px;
         }
 
         .back-link {
@@ -602,9 +644,9 @@
         }
 
         .contacts-block {
-            background: var(--color-bg);
+            background: transparent;
             padding: 32px;
-            border-radius: 8px;
+            border-radius: 0;
             margin: 20px 0;
         }
 
@@ -615,6 +657,49 @@
 
         .contacts-who {
             margin-bottom: 24px;
+        }
+
+        .contacts-first-paragraph-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+
+        .contacts-instructor-photo {
+            flex-shrink: 0;
+            width: auto;
+            height: auto;
+            max-height: 117px;
+            max-width: 117px;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .contacts-first-paragraph-container p {
+            margin: 0;
+            flex: 1;
+            align-self: center;
+        }
+
+        @media (max-width: 768px) {
+            .contacts-first-paragraph-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .contacts-instructor-photo {
+                width: auto;
+                max-width: 200px;
+                max-height: 117px;
+                align-self: center;
+                margin-bottom: 16px;
+            }
+
+            .contacts-first-paragraph-container p {
+                text-align: left;
+            }
         }
 
         .contacts-phones {
@@ -633,6 +718,11 @@
             cursor: pointer;
             -webkit-tap-highlight-color: rgba(0, 96, 152, 0.2);
             position: relative;
+        }
+
+        .contacts-phone-text {
+            min-height: 1em;
+            display: inline-block;
         }
 
         .contacts-phone-icon {
@@ -768,9 +858,12 @@
             }
 
             .header-left {
-                flex: 1 1 auto;
+                width: 100%;
+                flex: 1 1 100%;
                 min-width: 0;
                 gap: 8px;
+                order: 1;
+                justify-content: center;
             }
 
             .header-logo {
@@ -784,22 +877,40 @@
                 line-height: 1.2;
                 flex-shrink: 1;
                 min-width: 0;
+                color: var(--color-primary);
             }
 
-            .header-contacts {
+            .header-right {
                 width: 100%;
                 margin-top: 8px;
-                align-items: flex-start;
-                flex-direction: row;
                 flex-wrap: wrap;
                 gap: 8px;
-                max-width: 100%;
-                box-sizing: border-box;
+                order: 2;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .header-phone-group {
+                align-items: center;
+                flex-direction: row;
+                gap: 8px;
+                flex-shrink: 0;
+                flex-wrap: nowrap;
+            }
+
+            .header-social-group {
+                align-items: center;
+                flex-direction: row;
+                flex-shrink: 0;
+                flex-wrap: nowrap;
             }
 
             .header-phone-icon {
-                height: 32px;
+                height: auto;
                 flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .header-phone-icon svg {
@@ -808,20 +919,23 @@
             }
 
             .header-phones {
-                gap: 2px;
+                gap: 1px;
                 flex: 1 1 auto;
                 min-width: 0;
                 max-width: 100%;
                 overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
 
             .header-phone {
-                font-size: 12px;
+                font-size: 14px;
                 white-space: nowrap;
-                min-height: 44px;
+                line-height: 1.1;
                 display: flex;
                 align-items: center;
-                padding: 4px 0;
+                padding: 0;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 max-width: 100%;
@@ -846,28 +960,13 @@
 
             nav {
                 top: 0;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: thin;
-            }
-
-            nav::-webkit-scrollbar {
-                height: 4px;
-            }
-
-            nav::-webkit-scrollbar-track {
-                background: rgba(255, 255, 255, 0.1);
-            }
-
-            nav::-webkit-scrollbar-thumb {
-                background: rgba(255, 255, 255, 0.3);
-                border-radius: 2px;
+                overflow-x: hidden;
             }
 
             nav ul {
                 flex-direction: row;
-                flex-wrap: nowrap;
-                min-width: max-content;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             nav li {
@@ -880,7 +979,7 @@
             }
 
             nav a {
-                padding: 14px 16px;
+                padding: 7px 16px;
                 white-space: nowrap;
                 font-size: 13px;
                 min-height: 44px;
@@ -912,7 +1011,10 @@
                 line-height: 1.3;
                 word-wrap: break-word;
                 overflow-wrap: break-word;
-                hyphens: auto;
+                hyphens: none;
+                word-break: keep-all;
+                -webkit-hyphens: none;
+                -moz-hyphens: none;
             }
 
             .hero-subtitle {
@@ -927,6 +1029,9 @@
                 padding: 24px 16px;
                 max-width: calc(100% - 24px);
                 box-sizing: border-box;
+                background: rgba(255, 255, 255, 0.92);
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             }
 
             .info-block {
@@ -977,6 +1082,11 @@
                 padding: 40px 16px;
                 max-width: 100%;
                 box-sizing: border-box;
+                background: rgba(255, 255, 255, 0.92);
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                margin: 20px 12px;
+                max-width: calc(100% - 24px);
             }
 
             .section h2 {
@@ -1057,10 +1167,17 @@
 
             .header-tagline {
                 font-size: 8px;
+                color: var(--color-primary);
+            }
+
+            .header-phone-icon svg {
+                height: 30px;
+                width: 30px;
             }
 
             .header-phone {
-                font-size: 11px;
+                font-size: 13px;
+                line-height: 1.1;
             }
 
             .header-social a {
@@ -1076,7 +1193,7 @@
             }
 
             nav a {
-                padding: 12px 14px;
+                padding: 6px 14px;
                 font-size: 12px;
             }
 
@@ -1088,6 +1205,8 @@
             .hero h1 {
                 font-size: 20px;
                 margin-bottom: 12px;
+                hyphens: none;
+                word-break: keep-all;
             }
 
             .hero-subtitle {
@@ -1097,6 +1216,9 @@
             .info-blocks {
                 margin: 16px 10px;
                 padding: 20px 12px;
+                background: rgba(255, 255, 255, 0.92);
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             }
 
             .info-block {
@@ -1119,6 +1241,11 @@
 
             .main-content {
                 padding: 32px 12px;
+                background: rgba(255, 255, 255, 0.92);
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                margin: 16px 10px;
+                max-width: calc(100% - 20px);
             }
 
             .section h2 {
@@ -1161,10 +1288,17 @@
 
             .header-tagline {
                 font-size: 7px;
+                color: var(--color-primary);
+            }
+
+            .header-phone-icon svg {
+                height: 28px;
+                width: 28px;
             }
 
             .header-phone {
-                font-size: 10px;
+                font-size: 12px;
+                line-height: 1.1;
             }
 
             .header-social a {
@@ -1180,7 +1314,7 @@
             }
 
             nav a {
-                padding: 10px 12px;
+                padding: 5px 12px;
                 font-size: 11px;
             }
 
@@ -1191,6 +1325,8 @@
 
             .hero h1 {
                 font-size: 18px;
+                hyphens: none;
+                word-break: keep-all;
             }
 
             .hero-subtitle {
@@ -1200,6 +1336,9 @@
             .info-blocks {
                 margin: 12px 8px;
                 padding: 16px 10px;
+                background: rgba(255, 255, 255, 0.92);
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             }
 
             .info-block {
@@ -1224,10 +1363,21 @@
 
             .header-tagline {
                 font-size: 10px;
+                color: var(--color-primary);
+            }
+
+            .header-right {
+                flex-wrap: wrap;
+                align-items: center;
+            }
+
+            .header-phone-icon svg {
+                height: 36px;
+                width: 36px;
             }
 
             .header-phone {
-                font-size: 13px;
+                font-size: 15px;
             }
 
             .hero h1 {
@@ -1241,6 +1391,9 @@
             .info-blocks {
                 margin: 30px 20px;
                 padding: 40px 30px;
+                background: rgba(255, 255, 255, 0.92);
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             }
 
             .info-block {
@@ -1274,9 +1427,10 @@
 
             .header-tagline {
                 font-size: 8px;
+                color: var(--color-primary);
             }
 
-            .header-contacts {
+            .header-right {
                 margin-top: 6px;
             }
 
@@ -1292,10 +1446,107 @@
             .hero h1 {
                 font-size: 22px;
                 margin-bottom: 10px;
+                hyphens: none;
+                word-break: keep-all;
             }
 
             .hero-subtitle {
                 font-size: 15px;
+            }
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            -webkit-tap-highlight-color: rgba(0, 96, 152, 0.2);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-to-top:hover {
+            background: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .scroll-to-top:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .scroll-to-top svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        /* Desktop positioning */
+        @media (min-width: 900px) {
+            .scroll-to-top {
+                right: 30px;
+                bottom: 30px;
+            }
+        }
+
+        /* Mobile positioning */
+        @media (max-width: 899px) {
+            .scroll-to-top {
+                width: 44px;
+                height: 44px;
+                right: 50%;
+                transform: translateX(50%) translateY(20px);
+                bottom: 80px;
+            }
+
+            .scroll-to-top.visible {
+                transform: translateX(50%) translateY(0);
+            }
+
+            .scroll-to-top:hover {
+                transform: translateX(50%) translateY(-2px);
+            }
+
+            .scroll-to-top:active {
+                transform: translateX(50%) translateY(0);
+            }
+
+            .scroll-to-top svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        /* Very small mobile devices */
+        @media (max-width: 480px) {
+            .scroll-to-top {
+                width: 40px;
+                height: 40px;
+                bottom: 70px;
+            }
+
+            .scroll-to-top svg {
+                width: 18px;
+                height: 18px;
             }
         }
     </style>
@@ -1310,26 +1561,30 @@
                 <span>Байкала</span>
             </div>
         </div>
-            <div class="header-contacts">
-            <div class="header-phone-icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-                </svg>
+        <div class="header-right">
+            <div class="header-phone-group">
+                <div class="header-phone-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                </div>
+                <div class="header-phones">
+                    <span class="header-phone" data-phone="8-996-583-08-85">8-996-583-08-85</span>
+                    <span class="header-phone" data-phone="8-908-595-70-23">8-908-595-70-23</span>
+                </div>
             </div>
-            <div class="header-phones">
-                <span class="header-phone" data-phone="8-996-583-08-85">8-996-583-08-85</span>
-                <span class="header-phone" data-phone="8-908-595-70-23">8-908-595-70-23</span>
-            </div>
-            <div class="header-social">
-                <a href="https://vk.com/baikalnorth" target="_blank" title="VKontakte">
-                    <img src="vk.png" alt="VKontakte">
-                </a>
-                <a href="https://t.me/baikalnorth" target="_blank" title="Telegram">
-                    <img src="tg.png" alt="Telegram">
-                </a>
-                <a href="https://ok.ru/baikalnorth" target="_blank" title="Odnoklassniki">
-                    <img src="ok.png" alt="Odnoklassniki">
-                </a>
+            <div class="header-social-group">
+                <div class="header-social">
+                    <a href="https://vk.com/baikalnorth" target="_blank" title="VKontakte">
+                        <img src="vk.png" alt="VKontakte">
+                    </a>
+                    <a href="https://t.me/baikalnorth" target="_blank" title="Telegram">
+                        <img src="tg.png" alt="Telegram">
+                    </a>
+                    <a href="https://ok.ru/baikalnorth" target="_blank" title="Odnoklassniki">
+                        <img src="ok.png" alt="Odnoklassniki">
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -1597,7 +1852,10 @@
                     </div>
                     <div class="contacts-block">
                         <div class="contacts-who">
-                            <p>Александр — инструктор и организатор туров по северу Байкала (Северобайкальск, Нижнеангарск и окрестности). Помогает подобрать маршрут под состав и подготовку группы, сезон и погоду, согласует программу, длительность и стоимость до старта. На маршруте отвечает за организацию, безопасность и логистику.</p>
+                            <div class="contacts-first-paragraph-container">
+                                <img src="A.jpg" alt="Александр" class="contacts-instructor-photo">
+                                <p>Александр — инструктор и организатор туров по северу Байкала (Северобайкальск, Нижнеангарск и окрестности). Помогает подобрать маршрут под состав и подготовку группы, сезон и погоду, согласует программу, длительность и стоимость до старта. На маршруте отвечает за организацию, безопасность и логистику.</p>
+                            </div>
                             <p>Предпочтительный способ связи — написать в мессенджер (ВКонтакте, Telegram, Одноклассники). На маршруте связь может быть нестабильной, поэтому ответ не всегда бывает сразу. Как только появится интернет, Александр обязательно ответит.</p>
                         </div>
                         <div class="contacts-phones">
@@ -1607,7 +1865,7 @@
                                         <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                                     </svg>
                                 </span>
-                                8-996-583-08-85
+                                <span class="contacts-phone-text">8-996-583-08-85</span>
                             </span>
                             <span class="contacts-phone" data-phone="8-908-595-70-23">
                                 <span class="contacts-phone-icon">
@@ -1615,7 +1873,7 @@
                                         <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                                     </svg>
                                 </span>
-                                8-908-595-70-23
+                                <span class="contacts-phone-text">8-908-595-70-23</span>
                             </span>
                         </div>
                         <div class="contacts-route-info">
@@ -1656,6 +1914,13 @@
         <p>© <span class="footer-domain">baikalnorth.ru</span>, 2026 год</p>
         <p>Копирование и использование материалов без согласия правообладателя запрещено. Вся информация, опубликованная на сайте, не является публичной офертой. Подробности уточняйте по контактам, указанным на сайте</p>
     </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scroll-to-top" aria-label="Наверх">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4l-7 7h4v7h6v-7h4l-7-7z" fill="white"/>
+        </svg>
+    </button>
 
     <script>
         (function() {
@@ -1805,33 +2070,54 @@
                     e.stopPropagation();
                 }
                 
+                // Find the phone element that was clicked
+                let phoneElement = null;
+                let textElement = null;
+                
+                if (e && e.target) {
+                    // Check if clicked element is the phone element itself
+                    if (e.target.classList.contains('header-phone')) {
+                        phoneElement = e.target;
+                        textElement = e.target;
+                    } else if (e.target.classList.contains('contacts-phone')) {
+                        phoneElement = e.target;
+                        textElement = e.target.querySelector('.contacts-phone-text');
+                    } else if (e.target.closest('.header-phone')) {
+                        phoneElement = e.target.closest('.header-phone');
+                        textElement = phoneElement;
+                    } else if (e.target.closest('.contacts-phone')) {
+                        phoneElement = e.target.closest('.contacts-phone');
+                        textElement = phoneElement.querySelector('.contacts-phone-text');
+                    } else if (e.target.classList.contains('contacts-phone-text')) {
+                        phoneElement = e.target.closest('.contacts-phone');
+                        textElement = e.target;
+                    } else if (e.target.closest('.contacts-phone-icon')) {
+                        phoneElement = e.target.closest('.contacts-phone');
+                        textElement = phoneElement ? phoneElement.querySelector('.contacts-phone-text') : null;
+                    }
+                }
+                
+                if (!phoneElement || !textElement) {
+                    return;
+                }
+                
+                // Store original text content
+                const originalText = textElement.textContent.trim();
+                
                 // Try to copy to clipboard
                 if (navigator.clipboard && navigator.clipboard.writeText) {
                     navigator.clipboard.writeText(phoneNumber).then(() => {
-                        // Visual feedback
-                        const element = e ? e.target : null;
-                        if (element) {
-                            const originalText = element.textContent.trim();
-                            // Remove existing confirmation if present
-                            const existingConfirm = element.parentElement.querySelector('.phone-copied');
-                            if (existingConfirm) {
-                                existingConfirm.remove();
+                        // Visual feedback - replace text inline
+                        textElement.textContent = 'Скопировано';
+                        textElement.style.color = 'var(--color-accent)';
+                        
+                        // Restore after 1 second
+                        setTimeout(() => {
+                            if (textElement && textElement.parentElement) {
+                                textElement.textContent = originalText;
+                                textElement.style.color = '';
                             }
-                            // Add confirmation message
-                            const confirmSpan = document.createElement('span');
-                            confirmSpan.className = 'phone-copied';
-                            confirmSpan.textContent = 'Скопировано';
-                            confirmSpan.style.color = 'var(--color-accent)';
-                            confirmSpan.style.marginLeft = '8px';
-                            confirmSpan.style.fontSize = '14px';
-                            element.parentElement.appendChild(confirmSpan);
-                            // Remove confirmation after 2 seconds
-                            setTimeout(() => {
-                                if (confirmSpan.parentElement) {
-                                    confirmSpan.remove();
-                                }
-                            }, 2000);
-                        }
+                        }, 1000);
                     }).catch(err => {
                         console.error('Failed to copy phone number:', err);
                         // Fallback for older browsers
@@ -1904,7 +2190,57 @@
                     }
                 });
             }
+
+            // Scroll to Top Button functionality
+            (function() {
+                const scrollToTopBtn = document.getElementById('scroll-to-top');
+                let scrollThreshold = window.innerHeight * 2; // 200% of viewport height
+
+                function getScrollThreshold() {
+                    return window.innerHeight * 2;
+                }
+
+                function toggleScrollButton() {
+                    const scrollY = window.scrollY || window.pageYOffset;
+                    scrollThreshold = getScrollThreshold();
+                    if (scrollY >= scrollThreshold) {
+                        scrollToTopBtn.classList.add('visible');
+                    } else {
+                        scrollToTopBtn.classList.remove('visible');
+                    }
+                }
+
+                // Check on scroll
+                let scrollTimeout;
+                window.addEventListener('scroll', function() {
+                    if (scrollTimeout) {
+                        window.cancelAnimationFrame(scrollTimeout);
+                    }
+                    scrollTimeout = window.requestAnimationFrame(toggleScrollButton);
+                });
+
+                // Check on initial load
+                toggleScrollButton();
+
+                // Smooth scroll to top on click
+                scrollToTopBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+
+                // Update threshold on window resize
+                window.addEventListener('resize', function() {
+                    toggleScrollButton();
+                });
+            })();
         })();
     </script>
+
+<script data-goatcounter="https://baikalnorh.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
 </body>
 </html>
